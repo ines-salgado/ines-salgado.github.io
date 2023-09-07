@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+  </head>
+
+  <body>
+    <div class="container" style="margin-right: initial">
+      <div class="row col-md-12" style="margin-top: 50px; margin-left: 0">
+        <div class="col-md-6">
+          <h3 class="text-center my-4">Search for Weather:</h3>
+          <form
+            [formGroup]="weatherSearchForm"
+            (ngSubmit)="sendToAPIXU(weatherSearchForm.value)"
+          >
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                id="weatherLocation"
+                aria-describedby="weatherLocation"
+                placeholder="Please input a Location"
+                formControlName="location"
+              />
+            </div>
+            <div class="text-center" style="margin-top: 20px">
+              <button type="submit" class="btn btn-success btn-md">
+                search
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <span style="margin-top: 5%"></span>
+
+        <div class="col-md-6">
+          <h3 class="text-center my-4">Weather Details:</h3>
+          <p class="text-center">
+            <b>Temperature in Degrees Celsius:</b>
+            {{ this.weatherData?.current.temperature }}
+          </p>
+          <p class="text-center">
+            <b>Feels like in Degrees Celsius:</b>
+            {{ this.weatherData?.current.feelslike }}
+          </p>
+          <p class="text-center">
+            <b>Location:</b> {{ this.weatherData?.location.name }}
+            {{ this.weatherData?.location.country }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
